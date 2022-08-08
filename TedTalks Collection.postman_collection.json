@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "60778f34-9541-4c17-af25-b48546f58e0b",
+		"name": "TedTalks Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get tedtalks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/ted-talks/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ted-talks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tedtalks filter",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/ted-talks?author=Selin",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ted-talks"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Selin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create tedTalks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"author\" : \"Selin\",\n    \"title\" : \"Design Patterns\",\n    \"date\" : \"February 2022\",\n    \"views\" :  1,\n    \"likes\" : 1,\n    \"link\": \"http://selin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ted-talks/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ted-talks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update tedTalks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 5444,\n        \"title\": \"Design Patterns\",\n        \"author\": \"Selinimu\",\n        \"date\": \"February 2022\",\n        \"views\": 1,\n        \"likes\": 1,\n        \"link\": \"http://selin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ted-talks/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ted-talks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							" var resp = pm.response.json();",
+							" var token = resp.access_token;",
+							"pm.environment.set(\"accessToken\", token);",
+							"pm.globals.set(\"accessToken\", token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"grant_type\":\"password\",\n \"username\": \"user@personio.com\",\n \"password\": \"987#Personio\",\n \"audience\": \"hierarchy-resolver\",\n \"client_id\": \"pySrp0lpSBwugxowDfyeTNyBMyymyFp5\",\n \"client_secret\": \"-3nkStiiCI5RUR-dl_4PVR2Y4vYBIci2OG9fBxQ8vGL6oTmGWi4bm_0pMB8Ds5Bz\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-xp6a8ayy.us.auth0.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"dev-xp6a8ayy",
+						"us",
+						"auth0",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete tedTalks",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/ted-talks/5444",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ted-talks",
+						"5444"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
