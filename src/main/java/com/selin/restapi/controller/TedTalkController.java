@@ -5,8 +5,10 @@ import com.selin.restapi.model.TedTalk;
 import com.selin.restapi.service.TedTalkService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import com.querydsl.core.types.Predicate;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,21 +32,12 @@ public class TedTalkController {
 
     @GetMapping
     @ResponseBody
-    public Iterable<TedTalk> getAll(
-        @QuerydslPredicate(root = TedTalk.class) Predicate predicate) {
-        log.info("predicate : " + predicate.toString());
-        return service.findAll(predicate);
-    }
-
-    /*
-    @GetMapping
-    @ResponseBody
     Iterable<TedTalk> getAll(
             @PageableDefault Pageable pageable,
             @QuerydslPredicate(root = TedTalk.class) Predicate predicate ) {
         return service.findAll(predicate);
     }
-*/
+
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<TedTalk> update(@RequestBody TedTalk tedTalk) {
