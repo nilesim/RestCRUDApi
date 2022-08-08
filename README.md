@@ -5,6 +5,7 @@ Application is dockerized and a spring boot - maven - postgres - actuator applic
 
 To run:
 
+        mvn -X clean compile package
         docker-compose up --build
 To shutdown and cleanup:
 
