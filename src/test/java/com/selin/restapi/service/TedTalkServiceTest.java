@@ -5,6 +5,7 @@ import com.selin.restapi.model.TedTalk;
 import com.selin.restapi.repository.TedTalkPredicatesBuilder;
 import com.selin.restapi.repository.TedTalkRepository;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -33,14 +34,17 @@ class TedTalkServiceTest {
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
+    }
 
+    @BeforeEach
+    public void setup() {
         tedTalk = new TedTalk();
 
         tedTalk.setAuthor("selinimu");
         tedTalk.setTitle("Design Patterns");
         tedTalk.setDate("February 2022");
-        tedTalk.setViews(22L);
-        tedTalk.setLikes(1L);
+        tedTalk.setViews(Long.valueOf(22));
+        tedTalk.setLikes(Long.valueOf(1));
         tedTalk.setLink("http://selin");
     }
 
@@ -60,6 +64,13 @@ class TedTalkServiceTest {
     }
 
     @Test
+    void whenTedTalkIsDeleted_thenVerifyRepoDeleteCalled() {
+        tedTalkService.delete(Long.valueOf(1));
+        verify(repo, times(1)).deleteById(Long.valueOf(1));
+    }
+
+
+    @Test
     void whenTedTalkIsUpdated_thenChangedCustomerDetailsAreCorrect() {
 
         when(repo.save(tedTalk)).thenReturn(tedTalk);
@@ -72,12 +83,6 @@ class TedTalkServiceTest {
         assertEquals(newTedTalk.getLikes().toString(), "1");
         assertEquals(newTedTalk.getAuthor(), "selinimu");
         assertEquals(newTedTalk.getTitle(), "Design Patterns");
-    }
-
-    @Test
-    void whenTedTalkIsDeleted_thenVerifyRepoDeleteCalled() {
-        tedTalkService.delete(1L);
-        verify(repo, times(1)).deleteById(1L);
     }
 
     @Test
