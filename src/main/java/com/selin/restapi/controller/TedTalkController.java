@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/ted-talks")
 @Slf4j
@@ -36,6 +38,12 @@ public class TedTalkController {
             @PageableDefault Pageable pageable,
             @QuerydslPredicate(root = TedTalk.class) Predicate predicate ) {
         return service.findAll(predicate);
+    }
+
+    @GetMapping("/from-cache")
+    @ResponseBody
+    List<TedTalk> getAll() {
+        return service.getAll();
     }
 
     @PutMapping
