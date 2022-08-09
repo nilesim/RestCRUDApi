@@ -1,7 +1,7 @@
 package com.selin.restapi.service;
 
 import com.querydsl.core.types.Predicate;
-import com.selin.restapi.model.TedTalk;
+import com.selin.restapi.domain.model.TedTalk;
 import com.selin.restapi.repository.TedTalkRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,7 +6,7 @@ import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInA
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.core.IsNot.not;
 
-import com.selin.restapi.model.TedTalk;
+import com.selin.restapi.domain.model.TedTalk;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

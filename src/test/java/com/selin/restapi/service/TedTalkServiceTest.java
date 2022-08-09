@@ -1,7 +1,7 @@
 package com.selin.restapi.service;
 
 import com.querydsl.core.types.Predicate;
-import com.selin.restapi.model.TedTalk;
+import com.selin.restapi.domain.model.TedTalk;
 import com.selin.restapi.repository.TedTalkPredicatesBuilder;
 import com.selin.restapi.repository.TedTalkRepository;
 import org.junit.Before;
@@ -43,8 +43,8 @@ class TedTalkServiceTest {
         tedTalk.setAuthor("selinimu");
         tedTalk.setTitle("Design Patterns");
         tedTalk.setDate("February 2022");
-        tedTalk.setViews(Long.valueOf(22));
-        tedTalk.setLikes(Long.valueOf(1));
+        tedTalk.setViews(22L);
+        tedTalk.setLikes(1L);
         tedTalk.setLink("http://selin");
     }
 
@@ -65,8 +65,8 @@ class TedTalkServiceTest {
 
     @Test
     void whenTedTalkIsDeleted_thenVerifyRepoDeleteCalled() {
-        tedTalkService.delete(Long.valueOf(1));
-        verify(repo, times(1)).deleteById(Long.valueOf(1));
+        tedTalkService.delete(1L);
+        verify(repo, times(1)).deleteById(1L);
     }
 
 

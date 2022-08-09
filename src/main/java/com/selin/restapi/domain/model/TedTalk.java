@@ -1,4 +1,4 @@
-package com.selin.restapi.model;
+package com.selin.restapi.domain.model;
 
 import lombok.Data;
 import lombok.Getter;

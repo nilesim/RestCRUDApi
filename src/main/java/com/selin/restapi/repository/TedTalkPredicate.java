@@ -4,7 +4,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.core.types.dsl.StringPath;
-import com.selin.restapi.model.TedTalk;
+import com.selin.restapi.domain.model.TedTalk;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -2,8 +2,8 @@ package com.selin.restapi.repository;
 
 import com.querydsl.core.types.dsl.StringExpression;
 import com.querydsl.core.types.dsl.StringPath;
-import com.selin.restapi.model.TedTalk;
-import com.selin.restapi.model.QTedTalk;
+import com.selin.restapi.domain.model.TedTalk;
+import com.selin.restapi.domain.model.QTedTalk;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
